@@ -633,8 +633,8 @@
         .footer { background: #010d05; border-top: 1px solid rgba(255,255,255,0.07); padding: 0; overflow: hidden; }
         .ad-pool { position: relative; overflow: hidden; }
 
-        .ad-slide { display: none; padding: 48px 40px; animation: fadeSlide 0.6s ease; }
-        .ad-slide.active { display: flex; align-items: center; gap: 40px; }
+        .ad-slide { display: none; padding: 48px 40px; }
+        .ad-slide.active { display: flex; align-items: center; gap: 40px; min-height: 200px; }
 
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -1305,7 +1305,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="ad-pool">
-            <div class="ad-slide active" id="ad-0">
+            <div class="ad-slide" id="ad-0">
                 <div class="ad-icon ad-icon-carol"> </div>
                 <div class="ad-text">
                     <div class="ad-eyebrow ad-eyebrow-carol">Health Coaching</div>
@@ -1703,6 +1703,8 @@
     // ─────────────────────────────────────────────────────────────
     let currentAd = 0;
     const totalAds = 3;
+    document.getElementById('ad-0').classList.add('active');
+    document.querySelectorAll('.ad-dot')[0].classList.add('active');
     let adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
 
     function goToAd(idx) {

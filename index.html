@@ -1715,6 +1715,10 @@
     goToAd(0);
     let adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
 
+    document.addEventListener('DOMContentLoaded', function() {
+        goToAd(0);
+    });
+
     // ─────────────────────────────────────────────────────────────
     //  BOOKING (Carol)
     // ─────────────────────────────────────────────────────────────

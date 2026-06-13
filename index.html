@@ -1703,17 +1703,19 @@
     // ─────────────────────────────────────────────────────────────
     let currentAd = 0;
     const totalAds = 3;
+    let adTimer = null;
 
     function goToAd(idx) {
+        if (adTimer) clearInterval(adTimer);
         document.querySelectorAll('.ad-slide').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.ad-dot').forEach(d => d.classList.remove('active'));
         currentAd = idx;
         document.getElementById('ad-' + currentAd).classList.add('active');
         document.querySelectorAll('.ad-dot')[currentAd].classList.add('active');
+        adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
     }
 
     goToAd(0);
-    let adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
 
     document.addEventListener('DOMContentLoaded', function() {
         goToAd(0);

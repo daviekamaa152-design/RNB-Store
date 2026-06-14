@@ -630,67 +630,99 @@
         .shop-no-results .no-res-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.4; }
 
         /* FOOTER */
-        .footer { background: #010d05; border-top: 1px solid rgba(255,255,255,0.07); padding: 0; }
-        .ad-pool { position: relative; overflow: hidden; min-height: 200px; }
+        /* ── FOOTER ── */
+        .rnb-footer {
+            background: #010d05;
+            border-top: 1px solid rgba(255,255,255,0.07);
+        }
 
-        .ad-slide { display: none !important; padding: 48px 40px; }
-        .ad-slide.active { display: flex !important; align-items: center; gap: 40px; animation: fadeSlide 0.6s ease; }
+        /* Ad carousel */
+        .rnb-ad-pool { position: relative; }
 
-        @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        .rnb-ad-slide {
+            display: none;
+            padding: 48px 40px;
+            align-items: center;
+            gap: 40px;
+        }
+        .rnb-ad-slide.is-active {
+            display: flex;
+            animation: rnbFadeUp 0.5s ease;
+        }
+        @keyframes rnbFadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-        .ad-icon {
-            width: 80px; height: 80px;
-            border-radius: 20px;
+        .rnb-ad-icon {
+            width: 80px; height: 80px; border-radius: 20px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 36px;
-            flex-shrink: 0;
+            font-size: 36px; flex-shrink: 0;
         }
+        .rnb-ad-icon-carol { background: linear-gradient(135deg, #1a7a3c, #0f4020); }
+        .rnb-ad-icon-ifnhp { background: linear-gradient(135deg, #d4a000, #a07800); }
+        .rnb-ad-icon-maitu { background: linear-gradient(135deg, #6a3a1a, #3a1a08); }
 
-        .ad-icon-carol  { background: linear-gradient(135deg, #1a7a3c, #0f4020); }
-        .ad-icon-ifnhp  { background: linear-gradient(135deg, #FFBF00, #FFBF00); }
-        .ad-icon-maitu  { background: linear-gradient(135deg, #6a3a1a, #3a1a08); }
+        .rnb-ad-text { flex: 1; }
 
-        .ad-text { flex: 1; }
+        .rnb-ad-eyebrow {
+            font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+            margin-bottom: 8px; font-weight: 700;
+        }
+        .rnb-ad-eyebrow-carol { color: #3db870; }
+        .rnb-ad-eyebrow-ifnhp { color: #f0c030; }
+        .rnb-ad-eyebrow-maitu { color: #e0a060; }
 
-        .ad-eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 8px; font-weight: 600; }
-        .ad-eyebrow-carol { color: #3db870; }
-        .ad-eyebrow-ifnhp { color: #FFBF00; }
-        .ad-eyebrow-maitu { color: #e0a060; }
-
-        .ad-title { font-family: "Playfair Display", serif; font-size: 26px; font-weight: 400; line-height: 1.2; margin-bottom: 8px; }
-        .ad-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; max-width: 420px; margin-bottom: 20px; }
-
-        .ad-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            border: none; padding: 11px 24px; border-radius: 24px;
+        .rnb-ad-title {
+            font-family: "Playfair Display", serif;
+            font-size: 26px; font-weight: 400; line-height: 1.25;
+            margin-bottom: 8px; color: #fff;
+        }
+        .rnb-ad-desc {
+            font-size: 13px; color: rgba(255,255,255,0.5);
+            line-height: 1.7; max-width: 420px; margin-bottom: 20px;
+        }
+        .rnb-ad-cta {
+            display: inline-block;
+            padding: 11px 24px; border-radius: 24px; border: none;
             font-size: 13px; font-weight: 600; font-family: "Nunito", sans-serif;
-            cursor: pointer; transition: opacity 0.2s; text-decoration: none;
+            cursor: pointer; text-decoration: none; transition: opacity 0.2s;
         }
+        .rnb-ad-cta:hover { opacity: 0.82; }
+        .rnb-ad-cta-carol { background: #1a7a3c; color: #fff; }
+        .rnb-ad-cta-ifnhp { background: #d4a000; color: #fff; }
+        .rnb-ad-cta-maitu { background: #6a3a1a; color: #fff; }
 
-        .ad-btn:hover { opacity: 0.85; }
-        .ad-btn-carol { background: #1a7a3c; color: white; }
-        .ad-btn-ifnhp { background: #FFBF00; color: white; }
-        .ad-btn-maitu { background: #6a3a1a; color: white; }
-
-        .ad-dots { display: flex; justify-content: center; gap: 8px; padding: 0 0 28px; }
-
-        .ad-dot {
-            width: 6px; height: 6px; border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            cursor: pointer; transition: background 0.3s, width 0.3s; border: none;
+        /* Dots */
+        .rnb-ad-dots {
+            display: flex; justify-content: center;
+            gap: 8px; padding: 0 0 28px;
         }
+        .rnb-ad-dot {
+            width: 6px; height: 6px; border-radius: 50%; border: none;
+            background: rgba(255,255,255,0.18);
+            cursor: pointer; transition: background 0.3s, width 0.3s;
+            padding: 0;
+        }
+        .rnb-ad-dot.is-active { background: #3db870; width: 20px; border-radius: 3px; }
 
-        .ad-dot.active { background: #3db870; width: 20px; border-radius: 3px; }
-
-        .footer-bar {
+        /* Footer bar */
+        .rnb-footer-bar {
             border-top: 1px solid rgba(255,255,255,0.06);
             padding: 18px 40px;
             display: flex; align-items: center; justify-content: space-between;
             font-size: 12px; color: rgba(255,255,255,0.25);
         }
+        .rnb-footer-bar a { color: rgba(255,255,255,0.4); text-decoration: none; }
+        .rnb-footer-bar a:hover { color: #fff; }
 
-        .footer-bar a { color: rgba(255,255,255,0.35); text-decoration: none; }
-        .footer-bar a:hover { color: white; }
+        @media (max-width: 700px) {
+            .rnb-ad-slide, .rnb-ad-slide.is-active {
+                flex-direction: column; padding: 36px 20px; text-align: center;
+            }
+            .rnb-ad-desc { max-width: 100%; }
+            .rnb-footer-bar { flex-direction: column; gap: 8px; text-align: center; padding: 16px 20px; }
+        }
 
         /* BOOKING POPUP */
         .booking-popup-box { max-width: 520px; }
@@ -1052,9 +1084,7 @@
 
             .popup-box { padding: 28px 20px; }
             .toast { bottom: 16px; right: 16px; left: 16px; }
-            .ad-slide.active { display: flex !important; flex-direction: column; padding: 36px 20px; text-align: center; }
-            .ad-desc  { max-width: 100%; }
-            .footer-bar { flex-direction: column; gap: 8px; text-align: center; padding: 16px 20px; }
+            /* rnb-footer mobile styles are inside .rnb-footer block */
             .slots-grid { grid-template-columns: 1fr; }
             .grid { grid-template-columns: repeat(2, 1fr); }
             .co-row { grid-template-columns: 1fr; }
@@ -1303,42 +1333,51 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="ad-pool">
-            <div class="ad-slide active" id="ad-0">
-                <div class="ad-icon ad-icon-carol">🌿</div>
-                <div class="ad-text">
-                    <div class="ad-eyebrow ad-eyebrow-carol">Health Coaching</div>
-                    <div class="ad-title">Book a 1-on-1 session<br>with Carol Your Health Coach</div>
-                    <div class="ad-desc">Get personalised guidance from Carol, your dedicated health coach. Choose a date and time that works for you — KES 2,000 per session.</div>
-                    <button class="ad-btn ad-btn-carol" onclick="openPopup('bookingPopup')">→ Book Your Session</button>
+    <footer class="rnb-footer">
+        <div class="rnb-ad-pool">
+
+            <!-- Ad 0: Carol -->
+            <div class="rnb-ad-slide is-active" id="rnb-ad-0">
+                <div class="rnb-ad-icon rnb-ad-icon-carol">🌿</div>
+                <div class="rnb-ad-text">
+                    <div class="rnb-ad-eyebrow rnb-ad-eyebrow-carol">Health Coaching</div>
+                    <div class="rnb-ad-title">Book a 1-on-1 session<br>with Carol Your Health Coach</div>
+                    <div class="rnb-ad-desc">Get personalised guidance from Carol, your dedicated health coach. Choose a date and time that works for you — KES 2,000 per session.</div>
+                    <button class="rnb-ad-cta rnb-ad-cta-carol" onclick="openPopup('bookingPopup')">→ Book Your Session</button>
                 </div>
             </div>
-            <div class="ad-slide" id="ad-1">
-                <div class="ad-icon ad-icon-ifnhp">🎓</div>
-                <div class="ad-text">
-                    <div class="ad-eyebrow ad-eyebrow-ifnhp">Online Education</div>
-                    <div class="ad-title">Enrol in the next IFNHP<br>cohort — online</div>
-                    <div class="ad-desc">Join the Institute of Functional and Naturopathic Health Practice. Our next cohort is forming now. Learn at your own pace from anywhere.</div>
-                    <button class="ad-btn ad-btn-ifnhp" onclick="openPopup('ifnhpPopup')">→ Learn More & Enrol</button>
+
+            <!-- Ad 1: IFNHP -->
+            <div class="rnb-ad-slide" id="rnb-ad-1">
+                <div class="rnb-ad-icon rnb-ad-icon-ifnhp">🎓</div>
+                <div class="rnb-ad-text">
+                    <div class="rnb-ad-eyebrow rnb-ad-eyebrow-ifnhp">Online Education</div>
+                    <div class="rnb-ad-title">Enrol in the next IFNHP<br>cohort — online</div>
+                    <div class="rnb-ad-desc">Join the Institute of Functional and Naturopathic Health Practice. Our next cohort is forming now. Learn at your own pace from anywhere.</div>
+                    <button class="rnb-ad-cta rnb-ad-cta-ifnhp" onclick="openPopup('ifnhpPopup')">→ Learn More & Enrol</button>
                 </div>
             </div>
-            <div class="ad-slide" id="ad-2">
-                <div class="ad-icon ad-icon-maitu">🌸</div>
-                <div class="ad-text">
-                    <div class="ad-eyebrow ad-eyebrow-maitu">Wellness Centre</div>
-                    <div class="ad-title">Visit Maitú the Healing Mother<br>Wellness Centre</div>
-                    <div class="ad-desc">Experience a restorative in-person sitting and Stay with Maitu at her wellness centre. A deeply personal and healing experience awaits you.</div>
-                    <a class="ad-btn ad-btn-maitu" href="tel:+254118096799">📞 Call to Book: +254 118 096 799</a>
+
+            <!-- Ad 2: Maitú -->
+            <div class="rnb-ad-slide" id="rnb-ad-2">
+                <div class="rnb-ad-icon rnb-ad-icon-maitu">🌸</div>
+                <div class="rnb-ad-text">
+                    <div class="rnb-ad-eyebrow rnb-ad-eyebrow-maitu">Wellness Centre</div>
+                    <div class="rnb-ad-title">Visit Maitú the Healing Mother<br>Wellness Centre</div>
+                    <div class="rnb-ad-desc">Experience a restorative in-person sitting and stay with Maitú at her wellness centre. A deeply personal and healing experience awaits you.</div>
+                    <a class="rnb-ad-cta rnb-ad-cta-maitu" href="tel:+254118096799">📞 Call to Book: +254 118 096 799</a>
                 </div>
             </div>
+
         </div>
-        <div class="ad-dots">
-            <button class="ad-dot active" onclick="goToAd(0)"></button>
-            <button class="ad-dot" onclick="goToAd(1)"></button>
-            <button class="ad-dot" onclick="goToAd(2)"></button>
+
+        <div class="rnb-ad-dots">
+            <button class="rnb-ad-dot is-active" onclick="rnbGoToAd(0)"></button>
+            <button class="rnb-ad-dot" onclick="rnbGoToAd(1)"></button>
+            <button class="rnb-ad-dot" onclick="rnbGoToAd(2)"></button>
         </div>
-        <div class="footer-bar">
+
+        <div class="rnb-footer-bar">
             <span>© 2025 RNb Store. All rights reserved.</span>
             <span>
                 <a href="mailto:info@rnb.co.ke">info@rnb.co.ke</a> &nbsp;·&nbsp;
@@ -1701,28 +1740,30 @@
     // ─────────────────────────────────────────────────────────────
     //  AD ROTATION
     // ─────────────────────────────────────────────────────────────
-    let currentAd = 0;
-    const totalAds = document.querySelectorAll('.ad-slide').length;
-    let adTimer;
+    (function () {
+        var slides = document.querySelectorAll('.rnb-ad-slide');
+        var dots   = document.querySelectorAll('.rnb-ad-dot');
+        var current = 0;
+        var timer;
 
-    function goToAd(idx) {
-        // hide all slides first
-        document.querySelectorAll('.ad-slide').forEach(function(s) { s.classList.remove('active'); });
-        document.querySelectorAll('.ad-dot').forEach(function(d) { d.classList.remove('active'); });
-        // show selected
-        currentAd = idx;
-        var slide = document.getElementById('ad-' + currentAd);
-        var dot   = document.querySelectorAll('.ad-dot')[currentAd];
-        if (slide) slide.classList.add('active');
-        if (dot)   dot.classList.add('active');
-        // restart timer
-        clearInterval(adTimer);
-        adTimer = setInterval(function() { goToAd((currentAd + 1) % totalAds); }, 6000);
-    }
+        function rnbGoToAd(idx) {
+            slides[current].classList.remove('is-active');
+            dots[current].classList.remove('is-active');
+            current = (idx + slides.length) % slides.length;
+            slides[current].classList.add('is-active');
+            dots[current].classList.add('is-active');
+            clearInterval(timer);
+            timer = setInterval(function () { rnbGoToAd(current + 1); }, 6000);
+        }
 
-    // Kick off: hide all, show first
-    document.querySelectorAll('.ad-slide').forEach(function(s) { s.classList.remove('active'); });
-    goToAd(0);
+        // expose for onclick buttons
+        window.rnbGoToAd = rnbGoToAd;
+
+        // ensure first slide is visible then start
+        slides.forEach(function (s) { s.classList.remove('is-active'); });
+        dots.forEach(function (d)   { d.classList.remove('is-active'); });
+        rnbGoToAd(0);
+    })();
 
     // ─────────────────────────────────────────────────────────────
     //  BOOKING (Carol)

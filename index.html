@@ -657,11 +657,14 @@
         .rnb-ad-icon {
             width: 80px; height: 80px; border-radius: 20px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 36px; flex-shrink: 0;
+            font-size: 36px; flex-shrink: 0; overflow: hidden;
         }
-        .rnb-ad-icon-carol { background: linear-gradient(135deg, #1a7a3c, #0f4020); }
-        .rnb-ad-icon-ifnhp { background: linear-gradient(135deg, #d4a000, #a07800); }
-        .rnb-ad-icon-maitu { background: linear-gradient(135deg, #6a3a1a, #3a1a08); }
+        .rnb-ad-icon img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 20px;
+        }
+        .rnb-ad-icon-carol { background: transparent; }
+        .rnb-ad-icon-ifnhp { background: transparent; }
+        .rnb-ad-icon-maitu { background: transparent; }
 
         .rnb-ad-text { flex: 1; }
 
@@ -1331,7 +1334,7 @@
 
             <!-- Ad 0: Carol -->
             <div class="rnb-ad-slide is-active" id="rnb-ad-0">
-                <div class="rnb-ad-icon rnb-ad-icon-carol">🌿</div>
+                <div class="rnb-ad-icon rnb-ad-icon-carol"><img src="carol.png" alt="Carol Health Coach"></div>
                 <div class="rnb-ad-text">
                     <div class="rnb-ad-eyebrow rnb-ad-eyebrow-carol">Health Coaching</div>
                     <div class="rnb-ad-title">Book a 1-on-1 session<br>with Carol Your Health Coach</div>
@@ -1342,7 +1345,7 @@
 
             <!-- Ad 1: IFNHP -->
             <div class="rnb-ad-slide" id="rnb-ad-1">
-                <div class="rnb-ad-icon rnb-ad-icon-ifnhp">🎓</div>
+                <div class="rnb-ad-icon rnb-ad-icon-ifnhp"><img src="ifnhp.png" alt="IFNHP School"></div>
                 <div class="rnb-ad-text">
                     <div class="rnb-ad-eyebrow rnb-ad-eyebrow-ifnhp">Online Education</div>
                     <div class="rnb-ad-title">Enrol in the next IFNHP<br>cohort — online</div>
@@ -1353,7 +1356,7 @@
 
             <!-- Ad 2: Maitú -->
             <div class="rnb-ad-slide" id="rnb-ad-2">
-                <div class="rnb-ad-icon rnb-ad-icon-maitu">🌸</div>
+                <div class="rnb-ad-icon rnb-ad-icon-maitu"><img src="maitu.png" alt="Maitú Wellness Centre"></div>
                 <div class="rnb-ad-text">
                     <div class="rnb-ad-eyebrow rnb-ad-eyebrow-maitu">Wellness Centre</div>
                     <div class="rnb-ad-title">Visit Maitú the Healing Mother<br>Wellness Centre</div>

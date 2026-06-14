@@ -633,8 +633,8 @@
         .footer { background: #010d05; border-top: 1px solid rgba(255,255,255,0.07); padding: 0; }
         .ad-pool { position: relative; overflow: hidden; min-height: 200px; }
 
-        .ad-slide { display: none; padding: 48px 40px; animation: fadeSlide 0.6s ease; }
-        .ad-slide.active { display: flex; align-items: center; gap: 40px; }
+        .ad-slide { display: none !important; padding: 48px 40px; }
+        .ad-slide.active { display: flex !important; align-items: center; gap: 40px; animation: fadeSlide 0.6s ease; }
 
         @keyframes fadeSlide { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -1052,7 +1052,7 @@
 
             .popup-box { padding: 28px 20px; }
             .toast { bottom: 16px; right: 16px; left: 16px; }
-            .ad-slide.active { display: flex; flex-direction: column; padding: 36px 20px; text-align: center; }
+            .ad-slide.active { display: flex !important; flex-direction: column; padding: 36px 20px; text-align: center; }
             .ad-desc  { max-width: 100%; }
             .footer-bar { flex-direction: column; gap: 8px; text-align: center; padding: 16px 20px; }
             .slots-grid { grid-template-columns: 1fr; }
@@ -1306,7 +1306,7 @@
     <footer class="footer">
         <div class="ad-pool">
             <div class="ad-slide active" id="ad-0">
-                <div class="ad-icon ad-icon-carol"> </div>
+                <div class="ad-icon ad-icon-carol">🌿</div>
                 <div class="ad-text">
                     <div class="ad-eyebrow ad-eyebrow-carol">Health Coaching</div>
                     <div class="ad-title">Book a 1-on-1 session<br>with Carol Your Health Coach</div>
@@ -1315,7 +1315,7 @@
                 </div>
             </div>
             <div class="ad-slide" id="ad-1">
-                <div class="ad-icon ad-icon-ifnhp"> </div>
+                <div class="ad-icon ad-icon-ifnhp">🎓</div>
                 <div class="ad-text">
                     <div class="ad-eyebrow ad-eyebrow-ifnhp">Online Education</div>
                     <div class="ad-title">Enrol in the next IFNHP<br>cohort — online</div>
@@ -1324,7 +1324,7 @@
                 </div>
             </div>
             <div class="ad-slide" id="ad-2">
-                <div class="ad-icon ad-icon-maitu"> </div>
+                <div class="ad-icon ad-icon-maitu">🌸</div>
                 <div class="ad-text">
                     <div class="ad-eyebrow ad-eyebrow-maitu">Wellness Centre</div>
                     <div class="ad-title">Visit Maitú the Healing Mother<br>Wellness Centre</div>
@@ -1702,21 +1702,27 @@
     //  AD ROTATION
     // ─────────────────────────────────────────────────────────────
     let currentAd = 0;
-    const totalAds = 3;
+    const totalAds = document.querySelectorAll('.ad-slide').length;
     let adTimer;
 
     function goToAd(idx) {
-        document.getElementById('ad-' + currentAd).classList.remove('active');
-        document.querySelectorAll('.ad-dot')[currentAd].classList.remove('active');
+        // hide all slides first
+        document.querySelectorAll('.ad-slide').forEach(function(s) { s.classList.remove('active'); });
+        document.querySelectorAll('.ad-dot').forEach(function(d) { d.classList.remove('active'); });
+        // show selected
         currentAd = idx;
-        document.getElementById('ad-' + currentAd).classList.add('active');
-        document.querySelectorAll('.ad-dot')[currentAd].classList.add('active');
+        var slide = document.getElementById('ad-' + currentAd);
+        var dot   = document.querySelectorAll('.ad-dot')[currentAd];
+        if (slide) slide.classList.add('active');
+        if (dot)   dot.classList.add('active');
+        // restart timer
         clearInterval(adTimer);
-        adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
+        adTimer = setInterval(function() { goToAd((currentAd + 1) % totalAds); }, 6000);
     }
 
-    // Start ad rotation (first ad already active in HTML)
-    adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
+    // Kick off: hide all, show first
+    document.querySelectorAll('.ad-slide').forEach(function(s) { s.classList.remove('active'); });
+    goToAd(0);
 
     // ─────────────────────────────────────────────────────────────
     //  BOOKING (Carol)

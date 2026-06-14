@@ -1052,7 +1052,7 @@
 
             .popup-box { padding: 28px 20px; }
             .toast { bottom: 16px; right: 16px; left: 16px; }
-            .ad-slide { flex-direction: column; padding: 36px 20px; text-align: center; }
+            .ad-slide.active { display: flex; flex-direction: column; padding: 36px 20px; text-align: center; }
             .ad-desc  { max-width: 100%; }
             .footer-bar { flex-direction: column; gap: 8px; text-align: center; padding: 16px 20px; }
             .slots-grid { grid-template-columns: 1fr; }
@@ -1715,8 +1715,7 @@
         adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
     }
 
-    // Force-show the first ad and start rotation
-    goToAd(0);
+    // Start ad rotation (first ad already active in HTML)
     adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
 
     // ─────────────────────────────────────────────────────────────

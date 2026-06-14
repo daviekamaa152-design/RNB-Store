@@ -630,8 +630,8 @@
         .shop-no-results .no-res-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.4; }
 
         /* FOOTER */
-        .footer { background: #010d05; border-top: 1px solid rgba(255,255,255,0.07); padding: 0; overflow: hidden; }
-        .ad-pool { position: relative; overflow: hidden; }
+        .footer { background: #010d05; border-top: 1px solid rgba(255,255,255,0.07); padding: 0; }
+        .ad-pool { position: relative; overflow: hidden; min-height: 200px; }
 
         .ad-slide { display: none; padding: 48px 40px; animation: fadeSlide 0.6s ease; }
         .ad-slide.active { display: flex; align-items: center; gap: 40px; }
@@ -1703,7 +1703,7 @@
     // ─────────────────────────────────────────────────────────────
     let currentAd = 0;
     const totalAds = 3;
-    let adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
+    let adTimer;
 
     function goToAd(idx) {
         document.getElementById('ad-' + currentAd).classList.remove('active');
@@ -1714,6 +1714,10 @@
         clearInterval(adTimer);
         adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
     }
+
+    // Force-show the first ad and start rotation
+    goToAd(0);
+    adTimer = setInterval(() => goToAd((currentAd + 1) % totalAds), 6000);
 
     // ─────────────────────────────────────────────────────────────
     //  BOOKING (Carol)
